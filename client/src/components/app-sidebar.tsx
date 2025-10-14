@@ -1,4 +1,4 @@
-import { Home, CheckSquare, DollarSign, AlertTriangle, Database } from "lucide-react";
+import { Home, CheckSquare, DollarSign, AlertTriangle, Database, BarChart3 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import {
   Sidebar,
@@ -12,7 +12,6 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { Shield } from "lucide-react";
 
 const menuItems = [
   {
@@ -51,22 +50,22 @@ export function AppSidebar() {
   const [location] = useLocation();
 
   return (
-    <Sidebar>
-      <SidebarHeader className="border-b border-sidebar-border p-4">
+    <Sidebar className="bg-blue-950 border-r border-blue-900">
+      <SidebarHeader className="border-b border-blue-900 p-4 bg-blue-950">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-sidebar-primary/10 rounded-lg flex items-center justify-center">
-            <Shield className="w-5 h-5 text-sidebar-primary" />
+          <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center">
+            <BarChart3 className="w-5 h-5 text-blue-400" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-sidebar-foreground">DPRSense</h2>
-            <p className="text-xs text-muted-foreground">MDoNER</p>
+            <h2 className="text-sm font-semibold text-white">DPRSense</h2>
+            <p className="text-xs text-blue-300">MDoNER</p>
           </div>
         </div>
       </SidebarHeader>
       
-      <SidebarContent>
+      <SidebarContent className="bg-blue-950">
         <SidebarGroup>
-          <SidebarGroupLabel>Analysis Views</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-blue-300">Analysis Views</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
@@ -75,6 +74,7 @@ export function AppSidebar() {
                     asChild
                     isActive={location === item.url}
                     data-testid={item.testId}
+                    className="text-blue-100 hover:bg-blue-900 hover:text-white data-[active=true]:bg-blue-600 data-[active=true]:text-white"
                   >
                     <Link href={item.url}>
                       <item.icon className="w-4 h-4" />
@@ -88,9 +88,9 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
 
-      <SidebarFooter className="border-t border-sidebar-border p-4">
-        <div className="text-xs text-muted-foreground">
-          <p>Logged in as: <span className="font-medium text-sidebar-foreground">admin</span></p>
+      <SidebarFooter className="border-t border-blue-900 p-4 bg-blue-950">
+        <div className="text-xs text-blue-300">
+          <p>Logged in as: <span className="font-medium text-white">admin</span></p>
         </div>
       </SidebarFooter>
     </Sidebar>

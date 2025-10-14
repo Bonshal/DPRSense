@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
 import { FileText, DollarSign, Clock, MapPin, Building2, Ruler, Loader2 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -96,7 +97,7 @@ export default function OverviewPage() {
             <FileText className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="text-sm font-medium text-foreground" data-testid="text-project-title">
+            <p className="text-base font-semibold text-foreground" data-testid="text-project-title">
               {summary.projectTitle}
             </p>
           </CardContent>
@@ -123,6 +124,14 @@ export default function OverviewPage() {
             <p className="text-2xl font-bold text-foreground" data-testid="text-duration">
               {summary.duration}
             </p>
+            <div className="mt-3 pt-3 border-t border-border">
+              <p className="text-xs text-muted-foreground">Current Progress</p>
+              <p className="text-sm font-semibold text-foreground mt-1 mb-2">
+                Month 8 of 36
+              </p>
+              <Progress value={40} className="h-2" />
+              <p className="text-xs text-muted-foreground mt-1">40% Complete</p>
+            </div>
           </CardContent>
         </Card>
 
@@ -132,7 +141,7 @@ export default function OverviewPage() {
             <MapPin className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="text-lg font-medium text-foreground" data-testid="text-region">
+            <p className="text-2xl font-bold text-foreground" data-testid="text-region">
               {summary.region}
             </p>
           </CardContent>
@@ -144,7 +153,7 @@ export default function OverviewPage() {
             <Building2 className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <p className="text-sm font-medium text-foreground" data-testid="text-category">
+            <p className="text-base font-semibold text-foreground" data-testid="text-category">
               {summary.category}
             </p>
           </CardContent>

@@ -109,18 +109,15 @@ export default function UploadPage() {
                 id="file-upload"
                 data-testid="input-file"
               />
-              
-              <label htmlFor="file-upload">
-                <Button
-                  type="button"
-                  variant="outline"
-                  data-testid="button-browse"
-                  onClick={() => document.getElementById("file-upload")?.click()}
-                  asChild
-                >
-                  <span>Browse Files</span>
-                </Button>
-              </label>
+              <Button
+                type="button"
+                variant="outline"
+                data-testid="button-browse"
+                onClick={() => document.getElementById("file-upload")?.click()}
+                asChild
+              >
+                <span>Browse Files</span>
+              </Button>
             </div>
           </div>
 
