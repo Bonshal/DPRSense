@@ -58,7 +58,7 @@ export function AppSidebar() {
             <Shield className="w-5 h-5 text-sidebar-primary" />
           </div>
           <div>
-            <h2 className="text-sm font-semibold text-sidebar-foreground">DPR Appraisal</h2>
+            <h2 className="text-sm font-semibold text-sidebar-foreground">DPRSense</h2>
             <p className="text-xs text-muted-foreground">MDoNER</p>
           </div>
         </div>

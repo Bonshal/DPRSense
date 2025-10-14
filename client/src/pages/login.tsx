@@ -36,8 +36,8 @@ export default function LoginPage() {
     },
     onSuccess: () => {
       toast({
-        title: "Login Successful",
-        description: "Welcome to the DPR Appraisal Platform",
+  title: "Login Successful",
+  description: "Welcome to DPRSense",
       });
       setLocation("/upload");
     },
@@ -63,7 +63,7 @@ export default function LoginPage() {
               <Shield className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-2xl font-semibold text-foreground">
-              DPR Appraisal Platform
+              DPRSense
             </h1>
             <p className="text-sm text-muted-foreground mt-2">
               Ministry of Development of North Eastern Region
