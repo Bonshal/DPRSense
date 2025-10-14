@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
-import { Shield, Lock, User } from "lucide-react";
+import { BarChart3, Lock, User } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -55,17 +55,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/30 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-blue-900 to-blue-950 px-4">
       <div className="w-full max-w-md">
-        <div className="bg-card border border-card-border rounded-lg p-8 shadow-lg">
+        <div className="bg-white/95 backdrop-blur border border-blue-200 rounded-lg p-8 shadow-2xl">
           <div className="flex flex-col items-center mb-8">
-            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
-              <Shield className="w-8 h-8 text-primary" />
+            <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-4">
+              <BarChart3 className="w-8 h-8 text-blue-600" />
             </div>
-            <h1 className="text-2xl font-semibold text-foreground">
+            <h1 className="text-2xl font-semibold text-gray-900">
               DPRSense
             </h1>
-            <p className="text-sm text-muted-foreground mt-2">
+            <p className="text-sm text-gray-600 mt-2">
               Ministry of Development of North Eastern Region
             </p>
           </div>
