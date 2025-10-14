@@ -1,0 +1,246 @@
+---
+
+## 
+
+You are an expert frontend developer. Your task is to build a complete, high-fidelity, single-page React application that serves as an interactive demo for the **"Intelligent Project Appraisal Platform."**
+
+The application will simulate the results of a complex AI analysis of a Detailed Project Report (DPR). It must be built using **React** and a modern UI library of your choice, like **MUI** or **Tailwind CSS**, to create a **minimalistic, professional, and authoritative user interface**. Focus on creating an intuitive user experience with a clear visual hierarchy.
+
+### **1. Application Flow & Initial Views**
+
+The application must manage these initial states before showing the main dashboard:
+
+- **Login View:** A secure entry point with fields for "Username," "Password," and a "Login" button. **Demo Logic:** Hardcode credentials to `username: admin` and `password: password123`.
+- **Upload View:** Appears after login. Must have a clear file upload area and an "Analyze Report" button.
+- **Analyzing View:** A brief loading state, a progress wheel (simulate for 5 seconds) showing processing statuses.
+
+---
+
+### **2. Main Dashboard Layout & Navigation**
+
+After the analysis, the application must transition to a dashboard layout featuring a **persistent navigation menu** on the left. This menu will allow the user to switch between different analysis views without scrolling.
+
+The Navbar must contain the following navigation links:
+
+- **Dashboard** (Default View)
+- **Compliance & Completeness**
+- **Financial Analysis**
+- **Risk Assessment**
+- **Data Explorer**
+
+### **3. Dashboard Views (Content for Each Navigation Link)**
+
+**A. Dashboard / Overview View**
+
+- This is the landing page after analysis.
+- **Required Elements:** Display the most critical, at-a-glance summary cards: the overall **DPR Health Score**, the **Project Title**, Project catergory and the **Total Estimated Cost, Region, estimated duration etc**
+    - 
+    
+    ---
+    
+    ## ## 1. Contextual & Comparative Analytics (Benchmarking) 📊
+    
+    **What it is:** A dedicated view or a widget on the main dashboard that benchmarks the current DPR's key metrics against historical averages for similar projects.
+    
+    **Why it's valuable:** This is a killer feature. It answers the crucial question, "Is this project's cost and timeline reasonable?" A project might be complete and consistent, but still be a bad value. This provides immediate, objective context that is impossible to get from a manual review.
+    
+    **How it would look:**
+    
+    - A series of simple bar charts.
+    - **Chart 1: Cost Efficiency:** Shows "This Project's Cost" vs. "State Average Cost" for  project in the same category.
+    - **Chart 2: Time Efficiency:** Shows "This Project's Duration (Months)" vs. "Average Duration for similar budget size in the category".
+    - An alert could be triggered if a metric is significantly above the average (e.g., "> 2 Standard Deviations").
+    
+    ---
+    
+    ## ## 2. AI Explainability (XAI) - Risk Factor Breakdown 🧠
+    
+    **What it is:** A small section within the "Risk Assessment" view that explains *why* the AI assigned a particular risk score.
+    
+    **Why it's valuable:** This builds immense trust. A "High Risk" score is a black box. Showing the contributing factors makes the AI's decision transparent and defensible. The judges will almost certainly ask how you determine risk, and this feature answers that question visually.
+    
+    **How it would look:**
+    
+    - A simple, ranked list below the risk gauges.
+    - **"High Schedule Delay risk attributed to:"**
+        1. **Project Location:** Identified as a landslide-prone zone.
+        2. **Stated Risk:** DPR text mentions "dependency on timely forest clearance."
+        3. **Benchmark Anomaly:** Project duration is 30% shorter than the average for similar projects.
+    
+    ---
+    
+    ## ## 3. Geospatial Visualization (Project Map View) 🗺️
+    
+    **What it is:** An interactive map that displays a pin at the project's geo-coordinates, extracted from the DPR.
+    
+    **Why it's valuable:** It provides immediate geographical context. For a regional body like MDoNER, understanding *where* a project is located is fundamental. It's also a visually impressive feature that makes the data feel more tangible and real.
+    
+    **How it would look:**
+    
+    - A new tab or a large widget on the main dashboard showing a map (using a library like Leaflet or Mapbox), hardcoded for now.
+    - A pin marks the project's location.
+    - Clicking the pin opens a small popup with the Project Title and Total Cost.
+    
+    ---
+    
+    ## ## 4. Action & Collaboration Panel ✍️
+    
+    **What it is:** A dedicated panel that allows the official to take the next step in the workflow and leave a record.
+    
+    **Why it's valuable:** This makes the tool truly useful, not just a viewer. It integrates the AI analysis directly into the bureaucratic process of approval or rejection.
+    
+    **How it would look:**
+    
+    - A fixed panel at the bottom or side of the screen.
+    - **Action Buttons:** "Approve for Committee Review," "Flag for Clarification," "Reject."
+    - **Comment Box:** A text area for the official to add notes (e.g., "The financial mismatch on page 42 needs to be addressed by the implementing agency before this can proceed.").
+    - **Audit Trail:** A simple log showing the history of actions taken on this DPR analysis.
+
+**B. Compliance & Completeness View**
+
+- **Required Elements:** A detailed **Completeness Checklist** that shows the status (e.g., "Found" or "Not Found") for all mandatory sections of the DPR.
+
+**C. Financial Analysis View**
+
+- **Required Elements:** An **Inconsistency Report** presented as a table. This table should show the results of logical cross-checks, such as comparing the stated total cost to the sum of all line-item costs.
+
+**D. Risk Assessment View**
+
+- **Required Elements:** Detailed Visual indicators (like gauges or progress bars) for the predicted risks of **Cost Overruns** and **Schedule Delays**, based on the provided data.
+
+**E. Data Explorer View**
+
+- **Required Elements:** A comprehensive, expandable table listing all key data points extracted from the document.
+- Each row must show the **Data Point**, its **Extracted Value**, and a way to view its source. This is where the unique PDF viewer feature will be triggered.
+
+---
+
+### **4. Unique Feature: The PDF Source Viewer**
+
+This is a critical feature that must be implemented as described.
+
+just create the UI features for this right now so that the logic behind it can be added later:
+
+- **Trigger:** The user must be able to click a "View Source" icon or button in the **Data Explorer** table.
+- **Action:** This must open a modal or popup window.
+- **Content:** The modal must display an image of the relevant PDF page with a semi-transparent **highlight box** overlaid on top.
+- **Dynamic Positioning:** The position and size of this highlight box must be determined dynamically using the coordinates provided in the `source.highlightBox` object from the hardcoded JSON data.
+
+---
+
+### **5. Data Schema for Hardcoding**
+
+Use the following JSON object as the single source of truth for all data displayed across the different dashboard views.
+
+Plan, create a markdown file with the steps, and execute it step by step
+
+JSON
+
+# 
+
+`{
+  "fileName": "Vol-1 Revised DPR Moreh Bypass.pdf",
+  "dprHealthScore": 88,
+  "summary": {
+    "projectTitle": "Consultancy Services for Feasibility Study and Preparation of Detailed Project Report of Moreh Bypass",
+    "totalCost": "Rs. 250.78 Cr."
+  },
+  "completeness": [
+    {"item": "Project Title", "status": "Found"},
+    {"item": "Financial Summary", "status": "Found"},
+    {"item": "Project Duration", "status": "Found"},
+    {"item": "Technical Specifications", "status": "Found"},
+    {"item": "Compliance Statement", "status": "Not Found"}
+  ],
+
+  "riskPrediction": {
+    "costOverrun": {"probability": 22, "level": "Low"},
+    "scheduleDelay": {"probability": 35, "level": "Medium"}
+  },
+
+  "inconsistencies": [
+    {
+      "check": "Sum of Civil vs. Stated Civil Cost",
+      "statedValue": "Rs. 180.45 Cr.",
+      "calculatedValue": "Rs. 180.45 Cr.",
+      "status": "Match"
+    },
+    {
+      "check": "Total Project Cost vs. Sum of Components",
+      "statedValue": "Rs. 250.78 Cr.",
+      "calculatedValue": "Rs. 250.78 Cr.",
+      "status": "Match"
+    }
+  ],
+
+  "extractedEntities": [
+    {
+      "dataPoint": "Project Title",
+      "value": "Consultancy Services for Feasibility Study and Preparation of Detailed Project Report of Moreh Bypass including two laning with paved shoulders...",
+      "source": {
+        "pageImage": "/path/to/dpr_page_1.png",
+        "highlightBox": {"top": "50.1%", "left": "16.8%", "width": "66.3%", "height": "14.3%"}
+      }
+    },
+    {
+      "dataPoint": "Total Project Cost",
+      "value": "Rs. 250.78 Cr.",
+      "source": {
+        "pageImage": "/path/to/dpr_page_2.png",
+        "highlightBox": {"top": "34.1%", "left": "65.5%", "width": "11.1%", "height": "1.7%"}
+      }
+    },
+    {
+      "dataPoint": "Project Length",
+      "value": "13.650 km",
+      "source": {
+        "pageImage": "/path/to/dpr_page_2.png",
+        "highlightBox": {"top": "43.2%", "left": "38.5%", "width": "11.1%", "height": "1.7%"}
+      }
+    },
+    {
+      "dataPoint": "Carriageway Width",
+      "value": "7.0 m",
+      "source": {
+        "pageImage": "/path/to/dpr_page_2.png",
+        "highlightBox": {"top": "45.1%", "left": "38.5%", "width": "11.1%", "height": "1.7%"}
+      }
+    },
+    {
+      "dataPoint": "Implementing Agency",
+      "value": "National Highways & Infrastructure Development Corporation Limited",
+      "source": {
+        "pageImage": "/path/to/dpr_page_1.png",
+        "highlightBox": {"top": "81.2%", "left": "16.8%", "width": "66.3%", "height": "4.1%"}
+      }
+    },
+    {
+      "dataPoint": "Civil Construction Cost",
+      "value": "Rs. 180.45 Cr.",
+      "source": {
+        "pageImage": "/path/to/dpr_page_3.png",
+        "highlightBox": {"top": "40.5%", "left": "65.5%", "width": "11.1%", "height": "1.7%"}
+      }
+    }
+  ],`
+
+`}`
+
+"project_categories": [
+{
+"category_name": "Infrastructure Projects",
+"sub_categories": [
+"Road Construction",
+"Bridge Construction",
+"Other Infrastructure"
+]
+},
+{
+"category_name": "Socio-Economic Development Projects",
+"sub_categories": [
+"Healthcare Facilities",
+"Tourism Development",
+"Livelihood Activities"
+]
+}
+]
